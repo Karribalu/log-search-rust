@@ -1,0 +1,16 @@
+[package]
+name = "search-api"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+actix-web = "4.4.0"
+dotenv = "0.15.0"
+env_logger = { version = "0.10.1", features = [] }
+serde = { version = "1.0.192", features = ["derive"] }
+log = "0.4.20"
+serde_json = "1.0.108"
+mongodb = "2.7.1"
+chrono = "0.4.31"
