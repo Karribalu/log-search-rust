@@ -35,7 +35,7 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">LogSearch</h3>
+<h3 align="center">LogSearch</h3>
 
   <p align="center">
     A backend rust application for searching through logs efficiently.
@@ -90,7 +90,7 @@ example search criteria:
 
 
 ### Built With
-
+* React
 * Rust
 * Actix
 * MongoDB Atlas
@@ -112,19 +112,30 @@ This is an example of how to list things you need to use the software and how to
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
   ```
 * Rust (windows)
-    download and install.
-https://static.rust-lang.org/rustup/dist/x86_64-pc-windows-gnu/rustup-init.exe
+  download and install.
+  https://static.rust-lang.org/rustup/dist/x86_64-pc-windows-gnu/rustup-init.exe
 ### Execution
 
 _Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
+<h3>Frontend</h3>
+1. change the current directory to frontend folder.
+2. do npm install
+```sh
+npm install
+  ```
+3. start the application using
+```sh
+npm start
+  ```
+4. The front end app is started!
+   <h3> Backend </h3>
 1. Create a free cluster in mongodb atlas website.
 2. Create the user credentials.
 3. Create a DB named dyte.
 4. Create a collection named logs.
 3. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/dyte-submissions/november-2023-hiring-Karribalu.git
    ```
 4. Add the MongoDB URI in .env (format is similar to sample.env)
 5. execute from the same folder.
@@ -138,16 +149,25 @@ _Below is an example of how you can instruct your audience on installing and set
 
 <!-- USAGE EXAMPLES -->
 ## Usage
+<h3>Front End </h3>
+You can just enter your require criteria text in the text fields and you can see the results populted in the grid
+<h4>Improvements </h4>
+1. I didn't add Datetime Picker for timestamps, we can add that.
+2. We can make each text box to a combo box which can accept more than one value and search for it (Backend supports it).
+
+<img src="images/screenshot.png" alt="Logo" >
+
+<h3>Backend </h3>
 There are 2 types of parameters passed as query params.
-They are 
+They are
 1. qparams
-   1. The qparams are seperated by ; where each q param is in the form of
-    datapoint_name:values:operator
-   2. example: level:error:EQ, timestamp:1694762800000:GT (I will explain about this next)
+    1. The qparams are seperated by ; where each q param is in the form of
+       datapoint_name:values:operator
+    2. example: level:error:EQ, timestamp:1694762800000:GT (I will explain about this next)
 2. fparams
-   1. this specifies the datapoints which the user want to retrieve,
-   2. It defaults to all the datapoints in the sample json.
-   3. developed this way to get a part of logs as the log parameters increases.
+    1. this specifies the datapoints which the user want to retrieve,
+    2. It defaults to all the datapoints in the sample json.
+    3. developed this way to get a part of logs as the log parameters increases.
 
 Example query look like this.
 http://localhost:3000/search?q=level:error:EQ;timestamp:1694762800000:LE&f=level,message,resourceId,timestamp
@@ -179,15 +199,15 @@ There is no problem as the user will be able to see correct Date in front end.
 ex:
 ```json
 {
-"level": "error",
-"message": "Failed to connect to DB",
-"resourceId": "server-1234",
-"timestamp": "2023-09-15T08:00:00Z",
-"traceId": "abc-xyz-123",
-"spanId": "span-456",
-"commit": "5e5342f",
-"metadata": {
-  "parentResourceId": "server-0987"
+  "level": "error",
+  "message": "Failed to connect to DB",
+  "resourceId": "server-1234",
+  "timestamp": "2023-09-15T08:00:00Z",
+  "traceId": "abc-xyz-123",
+  "spanId": "span-456",
+  "commit": "5e5342f",
+  "metadata": {
+    "parentResourceId": "server-0987"
   }
 }
   ```
@@ -209,9 +229,9 @@ ex:
     "commit": "5e5342f",
     "metadata": {
       "parentResourceId": "server-0987"
-      }
-    },
-    {
+    }
+  },
+  {
     "level": "error",
     "message": "Failed to connect to DB",
     "resourceId": "server-1234",
@@ -222,7 +242,7 @@ ex:
     "metadata": {
       "parentResourceId": "server-0987"
     }
-    }
+  }
 ]
   ```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

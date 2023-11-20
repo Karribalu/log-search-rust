@@ -72,7 +72,7 @@ pub fn get_search_fields(search_params: &Vec<SearchTerm>) -> Document {
             match search_term.operator.as_str() {
                 "EQ" => {
                     let phrase = doc! {
-                        "text": doc!{
+                        "phrase": doc!{
                             "query": &search_term.values[0],
                             "path":  &json_path
                             //Uncomment the below line if you want the fuzzy search.
@@ -124,8 +124,13 @@ pub fn get_search_fields(search_params: &Vec<SearchTerm>) -> Document {
 
 fn get_projected_fields(f_params: &Vec<String>) -> Bson {
     let mut bson_doc = doc! {"_id": 0};
+
     for f_param in f_params{
-        bson_doc.insert(f_param, 1);
+        let datapoint = get_datapoint(f_param);
+        if datapoint.is_some() {
+            let json_path = datapoint.unwrap().json_path;
+            bson_doc.insert(json_path, 1);
+        }
     }
     Bson::from(bson_doc)
 }
