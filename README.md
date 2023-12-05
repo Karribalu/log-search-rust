@@ -127,7 +127,7 @@ npm start
 4. Create a collection named logs.
 3. Clone the repo
    ```sh
-   git clone https://github.com/log-search-rust
+   git clone https://github.com/karribalu/log-search-rust
    ```
 4. Add the MongoDB URI in .env (format is similar to sample.env)
 5. execute from the same folder.
